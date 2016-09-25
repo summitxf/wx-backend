@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mybatis
+    username: root
+    password: null
+    driver-class-name: com.mysql.jdbc.Driver
+    
+mybatis:
+  mapperLocations: classpath*:mapper/*.xml
+  
+weixin:
+  config:
+    appid: wx96d9f463ca0e3640
+    appsecret: d4ffa0e2f86da625d7cd2ee803dbdbad
+    token: faith
+    oauth2:
+      authurl: https://open.weixin.qq.com/connect/oauth2/authorize
+      baseurl: https://api.weixin.qq.com/sns
+      lang: zh_CN
+      defalut_redirect_uri: http://247.faithmore.com/vue-wechat/module/index.html
+      
+logging:
+  level:
+    feign: DEBUG
