@@ -60,6 +60,24 @@ public class OAuth2Controller {
 
 		return "redirect:" + redirectUrl;
 	}
+	
+	@RequestMapping(value = "/getAccessToken", method = RequestMethod.GET)
+	@ResponseBody
+	public AccessToken getAccessToken(@RequestParam(value = "code", required = true) String code) {
+
+		// 用户同意授权
+		if (!"authdeny".equals(code)) {
+			WeixinOAuth2Client weixinOAuth2Client = Feign.builder().logger(new feign.Logger.JavaLogger())
+					.logLevel(feign.Logger.Level.FULL).decoder(new GsonDecoder())
+					.target(WeixinOAuth2Client.class, "https://api.weixin.qq.com/sns");
+
+			// 获取网页授权access_token
+			AccessToken accessToken = weixinOAuth2Client.getAccessToken(appid, appsecret, code);
+			
+			return accessToken;
+		}
+		return null;
+	}
 
 	@RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
 	@ResponseBody
