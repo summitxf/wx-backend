@@ -17,7 +17,7 @@ weixin:
       authurl: https://open.weixin.qq.com/connect/oauth2/authorize
       baseurl: https://api.weixin.qq.com/sns
       lang: zh_CN
-      defalut_redirect_uri: http://247.faithmore.com/vue-wechat/module/index.html
+      defalut_redirect_uri: http://local.faithmore.com
       
 logging:
   level:
